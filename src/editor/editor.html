@@ -12,7 +12,7 @@
 </head>
 <body>
     <div id="left">
-        <textarea id="mdSource" onkeypress="debounceRenderMd()" autofocus></textarea>
+        <textarea id="mdSource" onkeyup="debounceRenderMd()" autofocus></textarea>
     </div>
     <div id="right">
         <div id="mdOutput"></div>
@@ -20,6 +20,7 @@
     <!--  Custom JS  -->
     <script class="theme" src="../../node_modules/@highlightjs/cdn-assets/highlight.min.js"></script>
     <script class="theme" src="../../node_modules/mermaid/dist/mermaid.js"></script>
+    <script class="theme" src="../../node_modules/mathjax/es5/tex-mml-chtml.js"></script>
     <script class="theme" src="../../node_modules/marked/marked.min.js"></script>
     <script class="theme" src="../theme/default/renderMd.js"></script>
     <!--  Base JS  -->

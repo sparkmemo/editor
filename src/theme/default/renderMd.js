@@ -11,10 +11,13 @@ renderer.code = function (code, language) {
 };
 
 function renderMd(mdSourceEl, mdOutputEl) {
+  // Convert Markdown to HTML
   mdOutputEl.innerHTML = marked(mdSourceEl.value, { renderer });
+  // Apply highlight.js for highlighting code
   document.querySelectorAll('pre code').forEach((block) => {
     hljs.highlightBlock(block);
   });
+  // Apply mermaid.js graph
   document.querySelectorAll('.mermaid').forEach((block) => {
     try {
       mermaid.init(undefined, block);
@@ -23,4 +26,6 @@ function renderMd(mdSourceEl, mdOutputEl) {
       block.classList.add('mermaid--error');
     }
   });
+  // Apply MathJax
+  MathJax.typeset();
 }

@@ -31,6 +31,7 @@
     "@highlightjs/cdn-assets": "^10.0.2",
     "lodash": "^4.17.15",
     "marked": "^1.0.0",
+    "mathjax": "^3.0.5",
     "mermaid": "^8.5.0"
   }
 }
