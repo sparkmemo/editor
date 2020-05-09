@@ -1,0 +1,347 @@
+#mdOutput a {
+    background-color: initial;
+}
+
+#mdOutput a:active,
+#mdOutput a:hover {
+    outline-width: 0;
+}
+
+#mdOutput strong {
+    font-weight: bolder;
+}
+
+#mdOutput h1 {
+    font-size: 2em;
+    margin: .67em 0;
+}
+
+#mdOutput img {
+    border-style: none;
+}
+
+#mdOutput code,
+#mdOutput pre {
+    font-family: monospace,monospace;
+    font-size: 1em;
+}
+
+#mdOutput hr {
+    box-sizing: initial;
+    height: 0;
+    overflow: visible;
+}
+
+#mdOutput * {
+    box-sizing: border-box;
+}
+
+#mdOutput a {
+    color: #0366d6;
+    text-decoration: none;
+}
+
+#mdOutput a:hover {
+    text-decoration: underline;
+}
+
+#mdOutput strong {
+    font-weight: 600;
+}
+
+#mdOutput hr {
+    height: 0;
+    margin: 15px 0;
+    overflow: hidden;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #dfe2e5;
+}
+
+#mdOutput hr:after,
+#mdOutput hr:before {
+    display: table;
+    content: "";
+}
+
+#mdOutput hr:after {
+    clear: both;
+}
+
+#mdOutput table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+#mdOutput td,
+#mdOutput th {
+    padding: 0;
+}
+
+#mdOutput h1,
+#mdOutput h2,
+#mdOutput h3,
+#mdOutput h4,
+#mdOutput h5,
+#mdOutput h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#mdOutput h1 {
+    font-size: 32px;
+}
+
+#mdOutput h1,
+#mdOutput h2 {
+    font-weight: 600;
+}
+
+#mdOutput h2 {
+    font-size: 24px;
+}
+
+#mdOutput h3 {
+    font-size: 20px;
+}
+
+#mdOutput h3,
+#mdOutput h4 {
+    font-weight: 600;
+}
+
+#mdOutput h4 {
+    font-size: 16px;
+}
+
+#mdOutput h5 {
+    font-size: 14px;
+}
+
+#mdOutput h5,
+#mdOutput h6 {
+    font-weight: 600;
+}
+
+#mdOutput h6 {
+    font-size: 12px;
+}
+
+#mdOutput p {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+#mdOutput blockquote {
+    margin: 0;
+}
+
+#mdOutput ol,
+#mdOutput ul {
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#mdOutput ol ol,
+#mdOutput ul ol {
+    list-style-type: lower-roman;
+}
+
+#mdOutput ol ol ol,
+#mdOutput ol ul ol,
+#mdOutput ul ol ol,
+#mdOutput ul ul ol {
+    list-style-type: lower-alpha;
+}
+
+#mdOutput code,
+#mdOutput pre {
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+    font-size: 12px;
+}
+
+#mdOutput pre {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#mdOutput hr {
+    border-bottom-color: #eee;
+}
+
+#mdOutput>:first-child {
+    margin-top: 0!important;
+}
+
+#mdOutput>:last-child {
+    margin-bottom: 0!important;
+}
+
+#mdOutput a:not([href]) {
+    color: inherit;
+    text-decoration: none;
+}
+
+#mdOutput blockquote,
+#mdOutput ol,
+#mdOutput p,
+#mdOutput pre,
+#mdOutput table,
+#mdOutput ul {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+#mdOutput hr {
+    height: .25em;
+    padding: 0;
+    margin: 24px 0;
+    background-color: #e1e4e8;
+    border: 0;
+}
+
+#mdOutput blockquote {
+    padding: 0 1em;
+    color: #6a737d;
+    border-left: .25em solid #dfe2e5;
+}
+
+#mdOutput blockquote>:first-child {
+    margin-top: 0;
+}
+
+#mdOutput blockquote>:last-child {
+    margin-bottom: 0;
+}
+
+#mdOutput h1,
+#mdOutput h2,
+#mdOutput h3,
+#mdOutput h4,
+#mdOutput h5,
+#mdOutput h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+#mdOutput h1 {
+    font-size: 2em;
+}
+
+#mdOutput h1,
+#mdOutput h2 {
+    padding-bottom: .3em;
+    border-bottom: 1px solid #eaecef;
+}
+
+#mdOutput h2 {
+    font-size: 1.5em;
+}
+
+#mdOutput h3 {
+    font-size: 1.25em;
+}
+
+#mdOutput h4 {
+    font-size: 1em;
+}
+
+#mdOutput h5 {
+    font-size: .875em;
+}
+
+#mdOutput h6 {
+    font-size: .85em;
+    color: #6a737d;
+}
+
+#mdOutput ol,
+#mdOutput ul {
+    padding-left: 2em;
+}
+
+#mdOutput ol ol,
+#mdOutput ol ul,
+#mdOutput ul ol,
+#mdOutput ul ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#mdOutput li {
+    word-wrap: break-word;
+}
+
+#mdOutput li>p {
+    margin-top: 16px;
+}
+
+#mdOutput li+li {
+    margin-top: .25em;
+}
+
+#mdOutput table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+}
+
+#mdOutput table th {
+    font-weight: 600;
+}
+
+#mdOutput table td,
+#mdOutput table th {
+    padding: 6px 13px;
+    border: 1px solid #dfe2e5;
+}
+
+#mdOutput table tr {
+    background-color: #fff;
+    border-top: 1px solid #c6cbd1;
+}
+
+#mdOutput table tr:nth-child(2n) {
+    background-color: #f6f8fa;
+}
+
+#mdOutput img {
+    max-width: 100%;
+    box-sizing: initial;
+    background-color: #fff;
+}
+
+#mdOutput code {
+    padding: .2em .4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(27,31,35,.05);
+    border-radius: 3px;
+}
+
+#mdOutput pre {
+    word-wrap: normal;
+}
+
+#mdOutput pre>code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    border: 0;
+}
+
+#mdOutput pre code {
+    display: inline;
+    width: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    line-height: inherit;
+    word-wrap: normal;
+    border: 0;
+}

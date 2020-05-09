@@ -7,24 +7,21 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     <!--  Custom CSS  -->
-    <link class="theme" rel="stylesheet" href="../../node_modules/@highlightjs/cdn-assets/styles/github.min.css">
-    <link class="theme" rel="stylesheet" href="../theme/default/default.css">
+    <link class="theme" rel="stylesheet" href="../theme/default/src/default.css">
 </head>
 <body>
     <div id="left">
-        <textarea id="mdSource" onkeyup="debounceRenderMd()" autofocus></textarea>
+        <textarea id="mdSource" autofocus></textarea>
     </div>
     <div id="right">
         <div id="mdOutput"></div>
     </div>
-    <!--  Custom JS  -->
-    <script class="theme" src="../../node_modules/@highlightjs/cdn-assets/highlight.min.js"></script>
-    <script class="theme" src="../../node_modules/mermaid/dist/mermaid.js"></script>
-    <script class="theme" src="../../node_modules/mathjax/es5/tex-mml-chtml.js"></script>
-    <script class="theme" src="../../node_modules/marked/marked.min.js"></script>
-    <script class="theme" src="../theme/default/renderMd.js"></script>
-    <!--  Base JS  -->
+
+    <!--  Base JS Lib  -->
     <script class="base" src="../../node_modules/lodash/lodash.min.js"></script>
+    <!--  Custom JS  -->
+    <script class="theme" src="../theme/default/dist/bundle.js"></script>
+    <!--  Base JS for editor  -->
     <script class="base" src="editor.js"></script>
 </body>
 </html>

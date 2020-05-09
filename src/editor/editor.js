@@ -39,6 +39,10 @@ function initEditor() {
 }
 
 // End of func declaration
-//
+// Add event listener
+mdSourceEl.addEventListener('keyup', () => {
+  debounceRenderMd();
+});
+
 // Start to exec func
 initEditor();

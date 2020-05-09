@@ -1,0 +1,18 @@
+{
+  "name": "sparkmemo-editor-theme-default",
+  "version": "1.0.0",
+  "description": "Default theme for SparkMEMO Editor.",
+  "main": "renderMd.js",
+  "scripts": {
+    "build": "npx webpack"
+  },
+  "author": "Tongze Wang",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {
+    "highlight.js": "^10.0.2",
+    "marked": "^1.0.0",
+    "mathjax": "^3.0.5",
+    "mermaid": "^8.5.0"
+  }
+}

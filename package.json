@@ -4,7 +4,8 @@
   "description": "A simple Markdown editor",
   "main": "index.js",
   "scripts": {
-    "test": "electron ."
+    "test": "electron .",
+    "prebuild": "npx webpack --config src/theme/default/webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -25,13 +26,11 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-vue": "^6.2.2"
+    "eslint-plugin-vue": "^6.2.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "@highlightjs/cdn-assets": "^10.0.2",
-    "lodash": "^4.17.15",
-    "marked": "^1.0.0",
-    "mathjax": "^3.0.5",
-    "mermaid": "^8.5.0"
+    "lodash": "^4.17.15"
   }
 }

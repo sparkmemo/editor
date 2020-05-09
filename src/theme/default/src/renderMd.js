@@ -1,3 +1,8 @@
+import hljs from 'highlight.js';
+import mermaid from 'mermaid';
+import '../node_modules/mathjax/es5/tex-mml-svg';
+import marked from 'marked';
+
 mermaid.initialize({ startOnLoad: false });
 
 const renderer = new marked.Renderer();
@@ -7,7 +12,7 @@ renderer.code = function (code, language) {
   }
 
   const validLanguage = hljs.getLanguage(language) ? language : 'plaintext';
-  return `<pre><code class="language-${validLanguage}">${code}</code></pre>`;
+  return `<pre><code class="language-${validLanguage}">${_.escape(code)}</code></pre>`;
 };
 
 function renderMd(mdSourceEl, mdOutputEl) {
@@ -29,3 +34,5 @@ function renderMd(mdSourceEl, mdOutputEl) {
   // Apply MathJax
   MathJax.typeset();
 }
+
+window.renderMd = renderMd;
