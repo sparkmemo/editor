@@ -1,8 +1,9 @@
-#mdOutput .mermaid {
+/* Style for Mermaid.js */
+.markdown .mermaid {
     text-align: center;
 }
 
-#mdOutput .mermaid--error {
+.markdown .mermaid--error {
     background-color: lightcoral;
     color: white;
 }

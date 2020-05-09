@@ -4,8 +4,7 @@
   "description": "A simple Markdown editor",
   "main": "index.js",
   "scripts": {
-    "test": "electron .",
-    "prebuild": "npx webpack --config src/theme/default/webpack.config.js"
+    "test": "electron ."
   },
   "repository": {
     "type": "git",
@@ -26,9 +25,7 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "eslint-plugin-vue": "^6.2.2"
   },
   "dependencies": {
     "lodash": "^4.17.15"

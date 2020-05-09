@@ -8,11 +8,16 @@
   },
   "author": "Tongze Wang",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "css-loader": "^3.5.3",
+    "mini-css-extract-plugin": "^0.9.0"
+  },
   "dependencies": {
     "highlight.js": "^10.0.2",
     "marked": "^1.0.0",
     "mathjax": "^3.0.5",
-    "mermaid": "^8.5.0"
+    "mermaid": "^8.5.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   }
 }

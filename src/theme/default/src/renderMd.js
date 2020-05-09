@@ -3,6 +3,10 @@ import mermaid from 'mermaid';
 import '../node_modules/mathjax/es5/tex-mml-svg';
 import marked from 'marked';
 
+import './theme.css';
+import './mermaid.css';
+import './highlight.js.css';
+
 mermaid.initialize({ startOnLoad: false });
 
 const renderer = new marked.Renderer();

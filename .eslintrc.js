@@ -29,4 +29,10 @@ module.exports = {
     'no-use-before-define': 'off',
     'max-len': ["error", { "code": 120 }],
   },
+  overrides: [
+    {
+      files: ['*.js'],
+      excludedFiles: ['package.json']
+    }
+  ]
 };
