@@ -7,7 +7,7 @@ module.exports = {
       filename: 'bundle.css',
     }),
   ],
-  entry: path.resolve(__dirname, 'src', 'renderMd.js'),
+  entry: path.resolve(__dirname, 'src', 'js', 'renderMd.js'),
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),

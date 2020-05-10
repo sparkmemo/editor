@@ -1,9 +1,9 @@
 /* Style for Mermaid.js */
-.markdown .mermaid {
+.markdown-body .mermaid {
     text-align: center;
 }
 
-.markdown .mermaid--error {
+.markdown-body .mermaid--error {
     background-color: lightcoral;
     color: white;
 }

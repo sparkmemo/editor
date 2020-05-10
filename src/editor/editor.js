@@ -30,8 +30,9 @@ function applyDisplayMode(mode) {
   displayMode = mode;
 }
 
-const debounceRenderMd = _.debounce(() => {
-  renderMd(mdSourceEl, mdOutputEl);
+const debounceProcessMd = _.debounce(() => {
+  mdOutputEl.innerHTML = renderMd(mdSourceEl.value);
+  postRenderMd();
 }, 100, { maxWait: 300 });
 
 function initEditor() {
@@ -41,7 +42,7 @@ function initEditor() {
 // End of func declaration
 // Add event listener
 mdSourceEl.addEventListener('keyup', () => {
-  debounceRenderMd();
+  debounceProcessMd();
 });
 
 // Start to exec func

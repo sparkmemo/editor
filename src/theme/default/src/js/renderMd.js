@@ -1,11 +1,12 @@
 import hljs from 'highlight.js';
 import mermaid from 'mermaid';
-import '../node_modules/mathjax/es5/tex-mml-svg';
+import 'mathjax/es5/tex-mml-svg';
 import marked from 'marked';
 
-import './theme.css';
-import './mermaid.css';
-import './highlight.js.css';
+import '../../node_modules/github-markdown-css/github-markdown.css';
+import '../css/mermaid.css';
+import '../css/highlight.css';
+import '../css/print.css';
 
 mermaid.initialize({ startOnLoad: false });
 
@@ -19,9 +20,12 @@ renderer.code = function (code, language) {
   return `<pre><code class="language-${validLanguage}">${_.escape(code)}</code></pre>`;
 };
 
-function renderMd(mdSourceEl, mdOutputEl) {
+function renderMd(mdSource) {
   // Convert Markdown to HTML
-  mdOutputEl.innerHTML = marked(mdSourceEl.value, { renderer });
+  return marked(mdSource, { renderer });
+}
+
+function postRenderMd() {
   // Apply highlight.js for highlighting code
   document.querySelectorAll('pre code').forEach((block) => {
     hljs.highlightBlock(block);
@@ -40,3 +44,4 @@ function renderMd(mdSourceEl, mdOutputEl) {
 }
 
 window.renderMd = renderMd;
+window.postRenderMd = postRenderMd;

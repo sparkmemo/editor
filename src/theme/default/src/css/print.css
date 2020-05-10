@@ -1,0 +1,14 @@
+@media print {
+    .left {
+        display: none;
+    }
+
+    .right {
+        right: 0;
+        width: 100vw;
+    }
+
+    .markdown-body pre code {
+        white-space: pre-wrap;
+    }
+}

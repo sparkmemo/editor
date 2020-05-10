@@ -1,0 +1,94 @@
+/* Style for highlight.js */
+.markdown-body .hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 1em;
+    color: #333;
+    background: #f8f8f8
+}
+
+.markdown-body .hljs-comment,
+.markdown-body .hljs-quote {
+    color: #998;
+    font-style: italic
+}
+
+.markdown-body .hljs-keyword,
+.markdown-body .hljs-selector-tag,
+.markdown-body .hljs-subst {
+    color: #333;
+    font-weight: 700
+}
+
+.markdown-body .hljs-literal,
+.markdown-body .hljs-number,
+.markdown-body .hljs-tag .hljs-attr,
+.markdown-body .hljs-template-variable,
+.markdown-body .hljs-variable {
+    color: teal
+}
+
+.markdown-body .hljs-doctag,
+.markdown-body .hljs-string {
+    color: #d14
+}
+
+.markdown-body .hljs-section,
+.markdown-body .hljs-selector-id,
+.markdown-body .hljs-title {
+    color: #900;
+    font-weight: 700
+}
+
+.markdown-body .hljs-subst {
+    font-weight: 400
+}
+
+.markdown-body .hljs-class .hljs-title,
+.markdown-body .hljs-type {
+    color: #458;
+    font-weight: 700
+}
+
+.markdown-body .hljs-attribute,
+.markdown-body .hljs-name,
+.markdown-body .hljs-tag {
+    color: navy;
+    font-weight: 400
+}
+
+.markdown-body .hljs-link,
+.markdown-body .hljs-regexp {
+    color: #009926
+}
+
+.markdown-body .hljs-bullet,
+.markdown-body .hljs-symbol {
+    color: #990073
+}
+
+.markdown-body .hljs-built_in,
+.markdown-body .hljs-builtin-name {
+    color: #0086b3
+}
+
+.markdown-body .hljs-meta {
+    color: #999;
+    font-weight: 700
+}
+
+.markdown-body .hljs-deletion {
+    background: #fdd
+}
+
+.markdown-body .hljs-addition {
+    background: #dfd
+}
+
+.markdown-body .hljs-emphasis {
+    font-style: italic
+}
+
+.markdown-body .hljs-strong {
+    font-weight: 700
+}
