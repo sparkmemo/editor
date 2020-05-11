@@ -1,10 +1,8 @@
 const { app, BrowserWindow } = require('electron');
 const { createEditorWindow } = require('./src/window.js');
 const { initIPC } = require('./src/ipc.js');
-const { store } = require('./src/settings-store.js');
 
 app.whenReady().then(() => {
-  store.set('preferredLang', app.getLocale());
   createEditorWindow();
 });
 

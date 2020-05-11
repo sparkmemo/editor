@@ -8,7 +8,7 @@ const langPack = {
   'zh-TW': zhTW,
 };
 
-function selectLanguage(locale) {
+function selectLanguage(locale = 'en') {
   let finalLocale = locale;
   if (!(finalLocale in langPack)) {
     finalLocale = locale.split('-')[0];
@@ -16,7 +16,7 @@ function selectLanguage(locale) {
       finalLocale = 'en';
     }
   }
-  console.log(`lang.js > final locale: ${finalLocale}`);
+  // console.log(`lang.js > final locale: ${finalLocale}`);
   return langPack[finalLocale];
 }
 

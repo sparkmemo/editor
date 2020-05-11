@@ -2,7 +2,6 @@ const { shell } = require('electron');
 const { selectLanguage } = require('./i18n/lang.js');
 
 module.exports.buildMenuTemplate = function (locale) {
-  console.log(`menu.js > preferred locale: ${locale}`);
   // t -> translation
   const t = selectLanguage(locale);
   return [

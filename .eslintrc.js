@@ -29,6 +29,7 @@ module.exports = {
     'no-use-before-define': 'off',
     'prefer-destructuring': 'off',
     'no-new': 'off',
+    'no-console': 'off',
     'max-len': ["error", { "code": 120 }],
   },
   overrides: [
