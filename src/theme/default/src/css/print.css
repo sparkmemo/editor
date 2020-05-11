@@ -4,8 +4,8 @@
     }
 
     .right {
-        right: 0;
-        width: 100vw;
+        position: initial;
+        width: 100%;
     }
 
     .markdown-body pre code {

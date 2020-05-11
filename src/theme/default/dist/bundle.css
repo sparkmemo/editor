@@ -1090,20 +1090,13 @@
 }
 
 @media print {
-    html,
-    body {
-        height: 100%;
-        width: 100%;
-    }
-
     .left {
         display: none;
     }
 
     .right {
-        right: 0;
+        position: initial;
         width: 100%;
-        height: 100%;
     }
 
     .markdown-body pre code {

@@ -1,21 +1,7 @@
 const { app, BrowserWindow } = require('electron');
-const path = require('path');
+const { createEditorWindow } = require('./src/window.js');
 
-function createWindow() {
-  const editor = new BrowserWindow({
-    width: 1280,
-    height: 720,
-    webPreferences: {
-      nodeIntegration: true,
-    },
-  });
-
-  editor.loadFile(path.join('src', 'editor', 'editor.html'));
-
-  editor.webContents.openDevTools();
-}
-
-app.whenReady().then(createWindow);
+app.whenReady().then(createEditorWindow);
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -25,6 +11,6 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
+    createEditorWindow();
   }
 });
