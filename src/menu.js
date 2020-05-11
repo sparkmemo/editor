@@ -1,11 +1,10 @@
-const { app, shell } = require('electron');
-const path = require('path');
-const langPack = require('./i18n/lang.js');
+const { shell } = require('electron');
+const { selectLanguage } = require('./i18n/lang.js');
 
 module.exports.buildMenuTemplate = function (locale) {
-  // console.log(`${locale} from menu.js`);
+  console.log(`menu.js > preferred locale: ${locale}`);
   // t -> translation
-  const t = langPack[locale];
+  const t = selectLanguage(locale);
   return [
     {
       label: t.menu.file,
@@ -21,7 +20,7 @@ module.exports.buildMenuTemplate = function (locale) {
           label: t.menu.fileMenu.save,
           accelerator: 'CmdOrCtrl+s',
           click(menuItem, window) {
-            //
+            window.webContents.send('save-request');
           },
         },
         {

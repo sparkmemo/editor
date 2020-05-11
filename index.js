@@ -1,7 +1,12 @@
 const { app, BrowserWindow } = require('electron');
 const { createEditorWindow } = require('./src/window.js');
+const { initIPC } = require('./src/ipc.js');
+const { store } = require('./src/settings-store.js');
 
-app.whenReady().then(createEditorWindow);
+app.whenReady().then(() => {
+  store.set('preferredLang', app.getLocale());
+  createEditorWindow();
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -14,3 +19,5 @@ app.on('activate', () => {
     createEditorWindow();
   }
 });
+
+initIPC();

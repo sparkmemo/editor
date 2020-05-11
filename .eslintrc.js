@@ -27,6 +27,8 @@ module.exports = {
     'no-param-reassign': 'off',
     'prefer-const': 'off',
     'no-use-before-define': 'off',
+    'prefer-destructuring': 'off',
+    'no-new': 'off',
     'max-len': ["error", { "code": 120 }],
   },
   overrides: [

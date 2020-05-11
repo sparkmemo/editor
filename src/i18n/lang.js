@@ -1,9 +1,26 @@
-const enUS = require('./en-US.js');
-const zhCN = require('./zh-CN.js');
+const en = require('./en.js');
+const zh = require('./zh.js');
+const zhTW = require('./zh-TW.js');
 
 const langPack = {
-  'en-US': enUS,
-  'zh-CN': zhCN,
+  en,
+  zh,
+  'zh-TW': zhTW,
 };
 
-module.exports = langPack;
+function selectLanguage(locale) {
+  let finalLocale = locale;
+  if (!(finalLocale in langPack)) {
+    finalLocale = locale.split('-')[0];
+    if (!(finalLocale in langPack)) {
+      finalLocale = 'en';
+    }
+  }
+  console.log(`lang.js > final locale: ${finalLocale}`);
+  return langPack[finalLocale];
+}
+
+module.exports = {
+  selectLanguage,
+  availableLang: Object.keys(langPack),
+};
