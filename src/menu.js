@@ -12,7 +12,7 @@ module.exports.buildMenuTemplate = function () {
           label: t.menu.fileMenu.open,
           accelerator: 'CmdOrCtrl+o',
           click(menuItem, window) {
-            window.webContents.send('load-request');
+            window.webContents.send('load-prepare-request');
           },
         },
         {

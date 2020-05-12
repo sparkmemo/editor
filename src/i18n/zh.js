@@ -74,7 +74,10 @@ module.exports = {
     selectSavePath: '请选择保存文件的路径',
     selectSaveAsPath: '请选择另存为文件的路径',
     selectOpenPath: '请选择打开文件的路径',
-    errorInWritingToFile: '写入文件时出现错误',
-    errorInReadingFromFile: '读取文件时出现错误',
+    cannotWritingFile: '无法写入文件',
+    cannotLoadingFile: '无法读取文件',
+    hasUnsavedChange: '您还有尚未保存的变动',
+    discardUnsavedChange: '丢弃尚未保存的变动',
+    cancel: '取消',
   },
 };
