@@ -6,6 +6,7 @@ const mdSourceEl = document.getElementById('mdSource');
 const mdOutputEl = document.getElementById('mdOutput');
 
 let displayMode;
+let prevKeyTimeStamp;
 
 let fileName = 'Untitled.md';
 let filePath = '';
@@ -41,36 +42,32 @@ const debounceProcessMd = _.debounce(() => {
   postRenderMd();
 }, 100, { maxWait: 300 });
 
-const debounceUpdateWindowTitle = _.debounce(() => {
+function updateWindowTitle() {
   document.title = `${fileName + (fileSaved ? '' : '*')} - SparkMEMO Editor`;
-});
+}
+
+const debounceResetFileSaved = _.debounce(() => {
+  fileSaved = false;
+  updateWindowTitle();
+}, 100);
 
 function initEditor() {
   applyDisplayMode('standard');
-  debounceUpdateWindowTitle();
+  updateWindowTitle();
 }
 
 // End of func declaration
 // Add event listener
-mdSourceEl.addEventListener('keyup', () => {
+mdSourceEl.addEventListener('keyup', (event) => {
+  // console.log(event);
   debounceProcessMd();
-  fileSaved = false;
-  debounceUpdateWindowTitle();
+  if (event.key !== 'Control' && event.ctrlKey !== true && (event.timeStamp - prevKeyTimeStamp) > 100) {
+    debounceResetFileSaved();
+  }
+  prevKeyTimeStamp = event.timeStamp;
 });
 
 // Start to exec func
 initEditor();
 
 // IPC for Electron
-ipcRenderer.on('save-request', () => {
-  ipcRenderer.send('save-reply', {
-    mdSource: mdSourceEl.value,
-    fileName,
-    filePath,
-  });
-});
-
-ipcRenderer.on('save-confirm', () => {
-  fileSaved = true;
-  debounceUpdateWindowTitle();
-});

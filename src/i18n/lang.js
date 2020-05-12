@@ -1,3 +1,4 @@
+const { store } = require('../settings-store.js');
 const en = require('./en.js');
 const zh = require('./zh.js');
 const zhTW = require('./zh-TW.js');
@@ -8,10 +9,10 @@ const langPack = {
   'zh-TW': zhTW,
 };
 
-function selectLanguage(locale = 'en') {
-  let finalLocale = locale;
+function selectLanguage() {
+  let finalLocale = store.get('preferredLang');
   if (!(finalLocale in langPack)) {
-    finalLocale = locale.split('-')[0];
+    finalLocale = finalLocale.split('-')[0];
     if (!(finalLocale in langPack)) {
       finalLocale = 'en';
     }

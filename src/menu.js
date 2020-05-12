@@ -1,9 +1,9 @@
 const { shell } = require('electron');
 const { selectLanguage } = require('./i18n/lang.js');
 
-module.exports.buildMenuTemplate = function (locale) {
+module.exports.buildMenuTemplate = function () {
   // t -> translation
-  const t = selectLanguage(locale);
+  const t = selectLanguage();
   return [
     {
       label: t.menu.file,
@@ -12,7 +12,7 @@ module.exports.buildMenuTemplate = function (locale) {
           label: t.menu.fileMenu.open,
           accelerator: 'CmdOrCtrl+o',
           click(menuItem, window) {
-            //
+            window.webContents.send('load-request');
           },
         },
         {
@@ -26,7 +26,7 @@ module.exports.buildMenuTemplate = function (locale) {
           label: t.menu.fileMenu.saveAs,
           accelerator: 'CmdOrCtrl+shift+s',
           click(menuItem, window) {
-            //
+            window.webContents.send('saveAs-request');
           },
         },
         {
