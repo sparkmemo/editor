@@ -6,6 +6,8 @@
     .right {
         position: initial;
         width: 100%;
+        height: 100%;
+        overflow: visible;
     }
 
     .markdown-body pre code {

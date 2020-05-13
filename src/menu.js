@@ -38,7 +38,7 @@ module.exports.buildMenuTemplate = function () {
             {
               label: t.menu.fileMenu.exportMenu.exportToPDF,
               click(menuItem, parentWindow) {
-                //
+                parentWindow.webContents.send('exportToPDF-request');
               },
             },
           ],
@@ -46,16 +46,16 @@ module.exports.buildMenuTemplate = function () {
         {
           type: 'separator',
         },
-        {
-          label: t.menu.fileMenu.settings,
-          accelerator: 'CmdOrCtrl+,',
-          click(menuIte, parentWindow) {
-            //
-          },
-        },
-        {
-          type: 'separator',
-        },
+        // {
+        //   label: t.menu.fileMenu.settings,
+        //   accelerator: 'CmdOrCtrl+,',
+        //   click(menuIte, parentWindow) {
+        //     //
+        //   },
+        // },
+        // {
+        //   type: 'separator',
+        // },
         {
           role: 'quit',
           label: t.menu.fileMenu.quit,

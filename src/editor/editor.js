@@ -115,3 +115,8 @@ ipcRenderer.on('saveAs-process-request', () => {
   fileSaved = true;
   updateWindowTitle();
 });
+
+// Export to PDF
+ipcRenderer.on('exportToPDF-request', () => {
+  ipcRenderer.send('exportToPDF-reply');
+});

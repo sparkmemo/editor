@@ -86,7 +86,12 @@ module.exports = {
       selectSaveAsPath: '请选择另存文件的路径',
       cannotSaveAsFile: '无法另存文件',
     },
+    exportToPDF: {
+      selectExportToPDFPath: '请选择导出文件的路径',
+      cannotExportToPDF: '无法导出至 PDF',
+    },
     mdFile: 'Markdown 文件',
+    pdfFile: 'PDF 文件',
     cancel: '取消',
   },
 };

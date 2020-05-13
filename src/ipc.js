@@ -72,6 +72,24 @@ function trySaveAsFile(parentWindow, t, saveAsPath, mdSource) {
   }
 }
 
+function tryExportToPDF(parentWindow, t, exportToPDFPath) {
+  parentWindow.webContents.printToPDF({
+    pageSize: 'A4',
+  }).then((pdfData) => {
+    try {
+      fs.writeFileSync(exportToPDFPath, pdfData, {
+        encoding: 'utf8',
+      });
+    } catch (error) {
+      dialog.showMessageBoxSync(parentWindow, {
+        type: 'error',
+        title: t.dialog.exportToPDF.cannotExportToPDF,
+        detail: error.toString(),
+      });
+    }
+  });
+}
+
 function initIPC() {
   // t -> translation
   const t = selectLanguage();
@@ -125,6 +143,22 @@ function initIPC() {
     });
     if (saveAsPathSelected) {
       trySaveAsFile(parentWindow, t, saveAsPathSelected, reply.mdSource);
+    }
+  });
+  // Export to PDF
+  ipcMain.on('exportToPDF-reply', (event) => {
+    const parentWindow = getBrowserWindow(event);
+    const exportToPDFPathSelected = dialog.showSaveDialogSync(parentWindow, {
+      title: t.dialog.exportToPDF.selectExportToPDFPath,
+      filters: [
+        {
+          name: t.dialog.pdfFile,
+          extensions: ['pdf'],
+        },
+      ],
+    });
+    if (exportToPDFPathSelected) {
+      tryExportToPDF(parentWindow, t, exportToPDFPathSelected);
     }
   });
 }
