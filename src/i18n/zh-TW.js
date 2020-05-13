@@ -69,4 +69,24 @@ module.exports = {
       checkForUpdates: '檢查更新',
     },
   },
+  dialog: {
+    unsavedChange: {
+      hasUnsavedChange: '當前有尚未保存的變動',
+      discardUnsavedChange: '丟棄尚未保存的變動',
+    },
+    load: {
+      selectLoadPath: '請選擇打開文件的路徑',
+      cannotLoadFile: '無法讀取文件',
+    },
+    save: {
+      selectSavePath: '請選擇保存文件的路徑',
+      cannotSaveFile: '無法保存文件',
+    },
+    saveAs: {
+      selectSaveAsPath: '請選擇另存文件的路徑',
+      cannotSaveAsFile: '無法另存文件',
+    },
+    mdFile: 'Markdown 文件',
+    cancel: '取消',
+  },
 };

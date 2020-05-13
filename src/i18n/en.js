@@ -69,4 +69,24 @@ module.exports = {
       checkForUpdates: 'Check for Updates',
     },
   },
+  dialog: {
+    unsavedChange: {
+      hasUnsavedChange: 'There are currently unsaved changes',
+      discardUnsavedChange: 'Discard unsaved changes',
+    },
+    load: {
+      selectLoadPath: 'Please select a file to load',
+      cannotLoadFile: 'Cannot load file',
+    },
+    save: {
+      selectSavePath: 'Please select a path to save',
+      cannotSaveFile: 'Cannot save file',
+    },
+    saveAs: {
+      selectSaveAsPath: 'Please select a path to save as',
+      cannotSaveAsFile: 'Cannot save as file',
+    },
+    mdFile: 'Markdown File',
+    cancel: 'Cancel',
+  },
 };
