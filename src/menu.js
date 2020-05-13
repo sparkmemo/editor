@@ -19,14 +19,14 @@ module.exports.buildMenuTemplate = function () {
           label: t.menu.fileMenu.save,
           accelerator: 'CmdOrCtrl+s',
           click(menuItem, window) {
-            window.webContents.send('save-request');
+            window.webContents.send('save-prepare-request');
           },
         },
         {
           label: t.menu.fileMenu.saveAs,
           accelerator: 'CmdOrCtrl+shift+s',
           click(menuItem, window) {
-            window.webContents.send('saveAs-request');
+            window.webContents.send('saveAs-prepare-request');
           },
         },
         {

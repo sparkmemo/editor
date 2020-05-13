@@ -6,6 +6,7 @@ const mdSourceEl = document.getElementById('mdSource');
 const mdOutputEl = document.getElementById('mdOutput');
 
 let displayMode;
+let lastKeyTimeStamp = 0;
 
 let fileName = 'Untitled.md';
 let filePath = '';
@@ -46,12 +47,12 @@ function updateWindowTitle() {
 }
 
 function checkWindowTitle(event) {
-  if (event.key !== 'Control' && event.ctrlKey !== true) {
+  const timeStampDelta = event.timeStamp - lastKeyTimeStamp;
+  if (event.key !== 'Control' && event.ctrlKey !== true && timeStampDelta > 100) {
     fileSaved = false;
   }
+  lastKeyTimeStamp = event.timeStamp;
 }
-
-const debounceCheckWindowTitle = _.debounce(checkWindowTitle, 100, { maxWait: 300 });
 
 function initEditor() {
   applyDisplayMode('standard');
@@ -63,7 +64,7 @@ function initEditor() {
 mdSourceEl.addEventListener('keyup', (event) => {
   // console.log(event);
   debounceProcessMd();
-  debounceCheckWindowTitle(event);
+  checkWindowTitle(event);
   updateWindowTitle();
 });
 
@@ -71,17 +72,46 @@ mdSourceEl.addEventListener('keyup', (event) => {
 initEditor();
 
 // IPC for Electron
+// Load file
 ipcRenderer.on('load-prepare-request', () => {
   ipcRenderer.send('load-prepare-reply', {
     fileSaved,
   });
 });
 
-ipcRenderer.on('load-process-request', (event, req) => {
-  mdSourceEl.value = req.fileContent;
+ipcRenderer.on('load-process-request', (event, request) => {
+  mdSourceEl.value = request.fileContent;
   debounceProcessMd();
-  fileName = req.fileName;
-  filePath = req.filePath;
+  fileName = request.fileName;
+  filePath = request.filePath;
+  fileSaved = true;
+  updateWindowTitle();
+});
+
+// Save file
+ipcRenderer.on('save-prepare-request', () => {
+  ipcRenderer.send('save-prepare-reply', {
+    fileName,
+    filePath,
+    mdSource: mdSourceEl.value,
+  });
+});
+
+ipcRenderer.on('save-process-request', (event, request) => {
+  fileName = request.fileName;
+  filePath = request.filePath;
+  fileSaved = true;
+  updateWindowTitle();
+});
+
+// Save as file
+ipcRenderer.on('saveAs-prepare-request', () => {
+  ipcRenderer.send('saveAs-prepare-reply', {
+    mdSource: mdSourceEl.value,
+  });
+});
+
+ipcRenderer.on('saveAs-process-request', () => {
   fileSaved = true;
   updateWindowTitle();
 });

@@ -70,14 +70,23 @@ module.exports = {
     },
   },
   dialog: {
+    unsavedChange: {
+      hasUnsavedChange: '当前有尚未保存的变动',
+      discardUnsavedChange: '丢弃尚未保存的变动',
+    },
+    load: {
+      selectLoadPath: '请选择打开文件的路径',
+      cannotLoadFile: '无法读取文件',
+    },
+    save: {
+      selectSavePath: '请选择保存文件的路径',
+      cannotSaveFile: '无法保存文件',
+    },
+    saveAs: {
+      selectSaveAsPath: '请选择另存文件的路径',
+      cannotSaveAsFile: '无法另存文件',
+    },
     mdFile: 'Markdown 文件',
-    selectSavePath: '请选择保存文件的路径',
-    selectSaveAsPath: '请选择另存为文件的路径',
-    selectOpenPath: '请选择打开文件的路径',
-    cannotWritingFile: '无法写入文件',
-    cannotLoadingFile: '无法读取文件',
-    hasUnsavedChange: '您还有尚未保存的变动',
-    discardUnsavedChange: '丢弃尚未保存的变动',
     cancel: '取消',
   },
 };
