@@ -112,42 +112,42 @@ module.exports.buildMenuTemplate = function () {
               label: t.menu.insertMenu.headingMenu.heading1,
               accelerator: 'Alt+1',
               click(menuItem, parentWindow) {
-                //
+                parentWindow.webContents.send('insertMd-request', 'heading1');
               },
             },
             {
               label: t.menu.insertMenu.headingMenu.heading2,
               accelerator: 'Alt+2',
               click(menuItem, parentWindow) {
-                //
+                parentWindow.webContents.send('insertMd-request', 'heading2');
               },
             },
             {
               label: t.menu.insertMenu.headingMenu.heading3,
               accelerator: 'Alt+3',
               click(menuItem, parentWindow) {
-                //
+                parentWindow.webContents.send('insertMd-request', 'heading3');
               },
             },
             {
               label: t.menu.insertMenu.headingMenu.heading4,
               accelerator: 'Alt+4',
               click(menuItem, parentWindow) {
-                //
+                parentWindow.webContents.send('insertMd-request', 'heading4');
               },
             },
             {
               label: t.menu.insertMenu.headingMenu.heading5,
               accelerator: 'Alt+5',
               click(menuItem, parentWindow) {
-                //
+                parentWindow.webContents.send('insertMd-request', 'heading5');
               },
             },
             {
               label: t.menu.insertMenu.headingMenu.heading6,
               accelerator: 'Alt+6',
               click(menuItem, parentWindow) {
-                //
+                parentWindow.webContents.send('insertMd-request', 'heading6');
               },
             },
           ],
@@ -159,21 +159,21 @@ module.exports.buildMenuTemplate = function () {
               label: t.menu.insertMenu.formatMenu.bold,
               accelerator: 'Alt+b',
               click(menuItem, parentWindow) {
-                //
+                parentWindow.webContents.send('insertMd-request', 'bold');
               },
             },
             {
               label: t.menu.insertMenu.formatMenu.italic,
               accelerator: 'Alt+i',
               click(menuItem, parentWindow) {
-                //
+                parentWindow.webContents.send('insertMd-request', 'italic');
               },
             },
             {
               label: t.menu.insertMenu.formatMenu.strikethrough,
               accelerator: 'Alt+d',
               click(menuItem, parentWindow) {
-                //
+                parentWindow.webContents.send('insertMd-request', 'strikethrough');
               },
             },
           ],
@@ -185,14 +185,14 @@ module.exports.buildMenuTemplate = function () {
           label: t.menu.insertMenu.inlineCode,
           accelerator: 'Alt+c',
           click(menuItem, parentWindow) {
-            //
+            parentWindow.webContents.send('insertMd-request', 'inlineCode');
           },
         },
         {
           label: t.menu.insertMenu.inlineMath,
           accelerator: 'Alt+m',
           click(menuItem, parentWindow) {
-            //
+            parentWindow.webContents.send('insertMd-request', 'inlineMath');
           },
         },
         {
@@ -202,14 +202,14 @@ module.exports.buildMenuTemplate = function () {
           label: t.menu.insertMenu.codeBlock,
           accelerator: 'CmdOrCtrl+Alt+c',
           click(menuItem, parentWindow) {
-            //
+            parentWindow.webContents.send('insertMd-request', 'codeBlock');
           },
         },
         {
           label: t.menu.insertMenu.mathBlock,
           accelerator: 'CmdOrCtrl+Alt+m',
           click(menuItem, parentWindow) {
-            //
+            parentWindow.webContents.send('insertMd-request', 'mathBlock');
           },
         },
         {
@@ -219,38 +219,21 @@ module.exports.buildMenuTemplate = function () {
           label: t.menu.insertMenu.hyperlink,
           accelerator: 'Alt+l',
           click(menuItem, parentWindow) {
-            //
+            parentWindow.webContents.send('insertMd-request', 'hyperlink');
           },
         },
         {
           label: t.menu.insertMenu.image,
           accelerator: 'Alt+p',
           click(menuItem, parentWindow) {
-            //
+            parentWindow.webContents.send('insertMd-request', 'image');
           },
         },
         {
           label: t.menu.insertMenu.quote,
           accelerator: 'Alt+q',
           click(menuItem, parentWindow) {
-            //
-          },
-        },
-        {
-          type: 'separator',
-        },
-        {
-          label: t.menu.insertMenu.orderedList,
-          accelerator: 'Alt+o',
-          click(menuItem, parentWindow) {
-            //
-          },
-        },
-        {
-          label: t.menu.insertMenu.unorderedList,
-          accelerator: 'Alt+u',
-          click(menuItem, parentWindow) {
-            //
+            parentWindow.webContents.send('insertMd-request', 'quote');
           },
         },
         {
@@ -260,7 +243,7 @@ module.exports.buildMenuTemplate = function () {
           label: t.menu.insertMenu.horizontalRule,
           accelerator: 'Alt+h',
           click(menuItem, parentWindow) {
-            //
+            parentWindow.webContents.send('insertMd-request', 'horizontalRule');
           },
         },
       ],

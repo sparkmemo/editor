@@ -161,6 +161,22 @@ function initIPC() {
       tryExportToPDF(parentWindow, t, exportToPDFPathSelected);
     }
   });
+  // Close window check
+  ipcMain.on('close-prepare-reply', (event, reply) => {
+    const parentWindow = getBrowserWindow(event);
+    if (reply.fileSaved === false) {
+      const optionSelected = dialog.showMessageBoxSync(parentWindow, {
+        type: 'warning',
+        buttons: [t.dialog.unsavedChange.discardUnsavedChange, t.dialog.cancel],
+        message: t.dialog.unsavedChange.hasUnsavedChange,
+      });
+      if (optionSelected === 0) {
+        parentWindow.destroy();
+      }
+    } else {
+      parentWindow.destroy();
+    }
+  });
 }
 
 module.exports = {

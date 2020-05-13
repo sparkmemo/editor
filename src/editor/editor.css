@@ -58,6 +58,7 @@ body {
     padding: 1rem;
     font-size: medium;
     font-family: var(--system-font);
+    tab-size: 4;
     overflow-x: hidden;
     overflow-y: auto;
 }

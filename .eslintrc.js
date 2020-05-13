@@ -30,6 +30,7 @@ module.exports = {
     'prefer-destructuring': 'off',
     'no-new': 'off',
     'no-console': 'off',
+    'no-restricted-syntax': 'off',
     'max-len': ["error", { "code": 120 }],
   },
   overrides: [
