@@ -225,6 +225,11 @@ ipcRenderer.on('insertMd-request', (event, insertType) => {
   updateWindowTitle();
 });
 
+// Apply display mode
+ipcRenderer.on('applyMode-request', (event, mode) => {
+  applyDisplayMode(mode);
+});
+
 // Close window check
 ipcRenderer.on('close-prepare-request', () => {
   ipcRenderer.send('close-prepare-reply', {

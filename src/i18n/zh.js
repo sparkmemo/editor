@@ -52,6 +52,9 @@ module.exports = {
     },
     view: '查看',
     viewMenu: {
+      editMode: '编辑模式',
+      readMode: '阅读模式',
+      standardMode: '标准模式',
       reload: '重新加载',
       toggleDevTools: '开发者工具',
       resetZoom: '重置缩放',

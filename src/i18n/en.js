@@ -52,6 +52,9 @@ module.exports = {
     },
     view: 'View',
     viewMenu: {
+      editMode: 'Edit Mode',
+      readMode: 'Read Mode',
+      standardMode: 'Standard Mode',
       reload: 'Reload',
       toggleDevTools: 'Toggle Dev Tools',
       resetZoom: 'Reset Zoom',

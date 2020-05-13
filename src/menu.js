@@ -252,6 +252,30 @@ module.exports.buildMenuTemplate = function () {
       label: t.menu.view,
       submenu: [
         {
+          label: t.menu.viewMenu.editMode,
+          accelerator: 'CmdOrCtrl+[',
+          click(menuItem, parentWindow) {
+            parentWindow.webContents.send('applyMode-request', 'edit');
+          },
+        },
+        {
+          label: t.menu.viewMenu.readMode,
+          accelerator: 'CmdOrCtrl+]',
+          click(menuItem, parentWindow) {
+            parentWindow.webContents.send('applyMode-request', 'read');
+          },
+        },
+        {
+          label: t.menu.viewMenu.standardMode,
+          accelerator: 'CmdOrCtrl+\\',
+          click(menuItem, parentWindow) {
+            parentWindow.webContents.send('applyMode-request', 'standard');
+          },
+        },
+        {
+          type: 'separator',
+        },
+        {
           label: t.menu.viewMenu.reload,
           role: 'reload',
         },
