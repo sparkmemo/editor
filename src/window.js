@@ -14,6 +14,10 @@ function createEditorWindow() {
   editor.loadFile(path.join(app.getAppPath(), 'src', 'editor', 'editor.html'));
   // editor.webContents.openDevTools();
   Menu.setApplicationMenu(Menu.buildFromTemplate(buildMenuTemplate()));
+
+  editor.webContents.on('will-navigate', (event) => {
+    event.preventDefault();
+  });
   editor.on('close', (event) => {
     event.preventDefault();
     editor.webContents.send('close-prepare-request');

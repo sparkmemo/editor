@@ -79,12 +79,11 @@ function initEditor() {
 
 // End of func declaration
 // Add event listener
-mdSourceEl.addEventListener('keyup', (event) => {
-  event.preventDefault();
-  // console.log(event);
-  // if (event.key === 'Tab') {
-  //   insertMarkdown('\t');
-  // }
+mdSourceEl.addEventListener('keydown', (event) => {
+  if (event.key === 'Tab') {
+    event.preventDefault();
+    insertMarkdown('\t');
+  }
   debounceProcessMd();
   checkWindowTitle(event);
   updateWindowTitle();
