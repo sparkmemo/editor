@@ -66,7 +66,11 @@ function updateWindowTitle() {
 
 function checkWindowTitle(event) {
   const timeStampDelta = event.timeStamp - lastKeyTimeStamp;
+  // console.log(event, timeStampDelta);
   if (event.key !== 'Control' && event.ctrlKey !== true && timeStampDelta > 100) {
+    fileSaved = false;
+  }
+  if (event.key !== 's' && event.ctrlKey === true) {
     fileSaved = false;
   }
   lastKeyTimeStamp = event.timeStamp;
