@@ -110,42 +110,42 @@ module.exports.buildMenuTemplate = function () {
           submenu: [
             {
               label: t.menu.insertMenu.headingMenu.heading1,
-              accelerator: 'Alt+1',
+              accelerator: process.platform === 'darwin' ? 'Ctrl+1' : 'Alt+1',
               click(menuItem, parentWindow) {
                 parentWindow.webContents.send('insertMd-request', 'heading1');
               },
             },
             {
               label: t.menu.insertMenu.headingMenu.heading2,
-              accelerator: 'Alt+2',
+              accelerator: process.platform === 'darwin' ? 'Ctrl+2' : 'Alt+2',
               click(menuItem, parentWindow) {
                 parentWindow.webContents.send('insertMd-request', 'heading2');
               },
             },
             {
               label: t.menu.insertMenu.headingMenu.heading3,
-              accelerator: 'Alt+3',
+              accelerator: process.platform === 'darwin' ? 'Ctrl+3' : 'Alt+3',
               click(menuItem, parentWindow) {
                 parentWindow.webContents.send('insertMd-request', 'heading3');
               },
             },
             {
               label: t.menu.insertMenu.headingMenu.heading4,
-              accelerator: 'Alt+4',
+              accelerator: process.platform === 'darwin' ? 'Ctrl+4' : 'Alt+4',
               click(menuItem, parentWindow) {
                 parentWindow.webContents.send('insertMd-request', 'heading4');
               },
             },
             {
               label: t.menu.insertMenu.headingMenu.heading5,
-              accelerator: 'Alt+5',
+              accelerator: process.platform === 'darwin' ? 'Ctrl+5' : 'Alt+5',
               click(menuItem, parentWindow) {
                 parentWindow.webContents.send('insertMd-request', 'heading5');
               },
             },
             {
               label: t.menu.insertMenu.headingMenu.heading6,
-              accelerator: 'Alt+6',
+              accelerator: process.platform === 'darwin' ? 'Ctrl+6' : 'Alt+6',
               click(menuItem, parentWindow) {
                 parentWindow.webContents.send('insertMd-request', 'heading6');
               },
@@ -157,21 +157,21 @@ module.exports.buildMenuTemplate = function () {
           submenu: [
             {
               label: t.menu.insertMenu.formatMenu.bold,
-              accelerator: 'Alt+b',
+              accelerator: process.platform === 'darwin' ? 'Ctrl+b' : 'Alt+b',
               click(menuItem, parentWindow) {
                 parentWindow.webContents.send('insertMd-request', 'bold');
               },
             },
             {
               label: t.menu.insertMenu.formatMenu.italic,
-              accelerator: 'Alt+i',
+              accelerator: process.platform === 'darwin' ? 'Ctrl+i' : 'Alt+i',
               click(menuItem, parentWindow) {
                 parentWindow.webContents.send('insertMd-request', 'italic');
               },
             },
             {
               label: t.menu.insertMenu.formatMenu.strikethrough,
-              accelerator: 'Alt+d',
+              accelerator: process.platform === 'darwin' ? 'Ctrl+d' : 'Alt+d',
               click(menuItem, parentWindow) {
                 parentWindow.webContents.send('insertMd-request', 'strikethrough');
               },
@@ -183,14 +183,14 @@ module.exports.buildMenuTemplate = function () {
         },
         {
           label: t.menu.insertMenu.inlineCode,
-          accelerator: 'Alt+c',
+          accelerator: process.platform === 'darwin' ? 'Ctrl+c' : 'Alt+c',
           click(menuItem, parentWindow) {
             parentWindow.webContents.send('insertMd-request', 'inlineCode');
           },
         },
         {
           label: t.menu.insertMenu.inlineMath,
-          accelerator: 'Alt+m',
+          accelerator: process.platform === 'darwin' ? 'Ctrl+m' : 'Alt+m',
           click(menuItem, parentWindow) {
             parentWindow.webContents.send('insertMd-request', 'inlineMath');
           },
@@ -217,21 +217,21 @@ module.exports.buildMenuTemplate = function () {
         },
         {
           label: t.menu.insertMenu.hyperlink,
-          accelerator: 'Alt+l',
+          accelerator: process.platform === 'darwin' ? 'Ctrl+l' : 'Alt+l',
           click(menuItem, parentWindow) {
             parentWindow.webContents.send('insertMd-request', 'hyperlink');
           },
         },
         {
           label: t.menu.insertMenu.image,
-          accelerator: 'Alt+p',
+          accelerator: process.platform === 'darwin' ? 'Ctrl+p' : 'Alt+p',
           click(menuItem, parentWindow) {
             parentWindow.webContents.send('insertMd-request', 'image');
           },
         },
         {
           label: t.menu.insertMenu.quote,
-          accelerator: 'Alt+q',
+          accelerator: process.platform === 'darwin' ? 'Ctrl+q' : 'Alt+q',
           click(menuItem, parentWindow) {
             parentWindow.webContents.send('insertMd-request', 'quote');
           },
@@ -241,7 +241,7 @@ module.exports.buildMenuTemplate = function () {
         },
         {
           label: t.menu.insertMenu.horizontalRule,
-          accelerator: 'Alt+h',
+          accelerator: process.platform === 'darwin' ? 'Ctrl+h' : 'Alt+h',
           click(menuItem, parentWindow) {
             parentWindow.webContents.send('insertMd-request', 'horizontalRule');
           },
