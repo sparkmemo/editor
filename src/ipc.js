@@ -1,4 +1,4 @@
-const { ipcMain, dialog, BrowserWindow } = require('electron');
+const { ipcMain, dialog, BrowserWindow, shell } = require('electron');
 const fs = require('fs');
 const path = require('path');
 const { selectLanguage } = require('./i18n/lang.js');
@@ -80,6 +80,7 @@ function tryExportToPDF(parentWindow, t, exportToPDFPath) {
       fs.writeFileSync(exportToPDFPath, pdfData, {
         encoding: 'utf8',
       });
+      shell.openItem(exportToPDFPath);
     } catch (error) {
       dialog.showMessageBoxSync(parentWindow, {
         type: 'error',

@@ -321,13 +321,13 @@ module.exports.buildMenuTemplate = function () {
         {
           label: t.menu.helpMenu.about,
           click() {
-            shell.openExternal('https://sparkmemo.com/editor');
+            shell.openExternal('https://github.com/sparkmemo/editor');
           },
         },
         {
           label: t.menu.helpMenu.checkForUpdates,
           click() {
-            shell.openExternal('https://github.com/sparkmemo/editor');
+            shell.openExternal('https://github.com/sparkmemo/editor/releases');
           },
         },
       ],
