@@ -1,6 +1,6 @@
 {
   "name": "sparkmemo-editor-theme-default",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Default theme for SparkMEMO Editor.",
   "main": "renderMd.js",
   "scripts": {

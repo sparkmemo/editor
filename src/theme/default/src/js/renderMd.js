@@ -35,7 +35,7 @@ function postRenderMd() {
     try {
       mermaid.init(undefined, block);
     } catch (e) {
-      block.innerHTML = '<p><span class="material-icons">warning</span>Error in Mermaid syntax</p>';
+      block.innerHTML = '<p>Error in Mermaid syntax</p>';
       block.classList.add('mermaid--error');
     }
   });

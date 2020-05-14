@@ -39,6 +39,12 @@
     "directories": {
       "output": "dist"
     },
+    "mac": {
+      "icon": "src/logo/logo.icns"
+    },
+    "win": {
+      "icon": "src/logo/logo.ico"
+    },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
