@@ -5,6 +5,8 @@
 
 ![](demo/demo.png)
 
+> 讨论群：<https://t.me/sparkmemo_editor>
+
 ## 支持的平台
 - Windows
 - Mac OS
