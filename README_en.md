@@ -5,6 +5,8 @@
 
 ![](demo/demo.png)
 
+> Discussion Group：<https://t.me/sparkmemo_editor>
+
 ## Supported Platforms
 - Windows
 - Mac OS
