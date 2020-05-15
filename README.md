@@ -1,4 +1,6 @@
 # SparkMEMO Editor
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fsparkmemo%2Feditor.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fsparkmemo%2Feditor?ref=badge_shield)
+
 > 一个简洁的 Markdown 编辑器
 
 [English](README_en.md) | [中文](README.md)
@@ -36,3 +38,7 @@
 SparkMEMO Editor 使用 **MIT** 许可证。
 
 SparkMEMO Editor 的部分依赖可能会使用其他不同的许可证。
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fsparkmemo%2Feditor.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fsparkmemo%2Feditor?ref=badge_large)
