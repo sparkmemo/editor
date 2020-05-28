@@ -28,6 +28,7 @@
 - 自定义 Markdown 扩展语法
 - 自定义 Markdown 主题样式
 - 自定义界面显示语言
+- 文件夹视图
 
 ## 更多功能建议
 如果你有希望 SparkMEMO Editor 实现某些功能的建议，欢迎提交 Issue。

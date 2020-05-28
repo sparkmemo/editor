@@ -28,6 +28,7 @@
 - Customizable Markdown expanding syntax
 - Customizable Markdown rendering theme and style
 - Customizable UI display language
+- Folder view
 
 ## Suggestions on more features
 If you have any suggestions on more features that you want SparkMEMO Editor to build, feel free to open an Issue.
