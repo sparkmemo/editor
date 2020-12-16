@@ -1,5 +1,2 @@
-.idea/
 dist/
 node_modules/
-src/theme/default/node_modules/
-src/theme/default/dist/
