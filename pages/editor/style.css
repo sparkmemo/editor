@@ -1,0 +1,55 @@
+.source-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50vw;
+  height: 100vh;
+}
+
+#source {
+  height: calc(100% - 32px);
+  width: calc(100% - 32px);
+  outline: none;
+  border: none;
+  resize: none;
+  padding: 1rem;
+
+  background-color: #f7f7f7;
+  font-size: 16px;
+}
+
+.output-box {
+  position: absolute;
+  top: 0;
+  left: 50vw;
+  width: 50vw;
+  height: 100vh;
+}
+
+#output {
+  height: calc(100% - 32px);
+  width: calc(100% - 32px);
+  padding: 1rem;
+
+  background-color: white;
+  font-size: 16px;
+  overflow-y: auto;
+}
+
+#output blockquote {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#output div.lang-mermaid svg {
+  display: block;
+  margin: 0 auto 16px auto;
+}
+
+#output span.lang-katex-inline {
+  margin: 0 4px;
+}
+
+#output div.lang-katex-block .katex-display {
+  margin: 0 auto 16px auto;
+}

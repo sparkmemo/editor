@@ -1,0 +1,9 @@
+appId: com.sparkmemo.editor
+productName: SparkMEMO
+copyright: Copyright © 2021 Tongze Wang
+mac:
+  category: public.app-category.utilities
+  target:
+    - target: dir
+      arch:
+        - arm64

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sparkdown Editor</title>
+    <link
+      rel="stylesheet"
+      href="../../node_modules/@primer/css/dist/markdown.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../node_modules/@highlightjs/cdn-assets/styles/github.min.css"
+    />
+    <link rel="stylesheet" href="../../node_modules/katex/dist/katex.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="editor">
+      <div class="source-box">
+        <textarea id="source"></textarea>
+      </div>
+      <div class="output-box">
+        <div id="output" class="markdown-body"></div>
+      </div>
+    </div>
+    <script src="../../node_modules/marked/marked.min.js"></script>
+    <script src="../../node_modules/@highlightjs/cdn-assets/highlight.min.js"></script>
+    <script src="../../node_modules/mermaid/dist/mermaid.min.js"></script>
+    <script src="../../node_modules/katex/dist/katex.min.js"></script>
+    <script src="../../node_modules/katex/dist/contrib/mhchem.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
