@@ -1,0 +1,36 @@
+env:
+  browser: true
+  commonjs: true
+  es2021: true
+  node: true
+extends:
+  - "eslint:recommended"
+  - "plugin:jsdoc/recommended"
+parserOptions:
+  ecmaVersion: 12
+rules:
+  indent:
+    - error
+    - 2
+    - SwitchCase: 1
+  linebreak-style:
+    - error
+    - unix
+  quotes:
+    - error
+    - double
+    - allowTemplateLiterals: true
+      avoidEscape: true
+  semi:
+    - error
+    - always
+  no-undef:
+    - off
+  prefer-template:
+    - error
+  jsdoc/require-jsdoc:
+    - error
+  sort-imports:
+    - error
+  no-case-declarations:
+    - off

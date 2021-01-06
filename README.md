@@ -1,5 +1,5 @@
 # SparkMEMO
 > A simple Markdown editor.
 
-# Changes from SparkMEMO Editor v0.1.0
-**SparkMEMO Editor** is renamed to **SparkMEMO** now!
+# Changes from v0.1.0
+**SparkMEMO Editor** has been renamed to **SparkMEMO** now!

@@ -1,19 +1,26 @@
 const { app, BrowserWindow, Menu } = require("electron");
 const path = require("path");
 
+/**
+ * Creates an editor window.
+ */
 function createWindow() {
   const win = new BrowserWindow({
     width: 1280,
     height: 720,
     webPreferences: {
-      contextIsolation: true,
+      contextIsolation: false,
+      nodeIntegration: true,
     },
   });
 
-  // win.webContents.openDevTools();
+  win.webContents.openDevTools();
   win.loadFile(path.resolve(__dirname, "pages", "editor", "index.html"));
 }
 
+/**
+ * Sets the electron app menu.
+ */
 function setMenu() {
   const { menuTemplate } = require("./core/menu");
   Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate));
@@ -40,3 +47,7 @@ app.on("activate", () => {
     createWindow();
   }
 });
+
+module.exports = {
+  createWindow,
+};
