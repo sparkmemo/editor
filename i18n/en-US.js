@@ -14,6 +14,7 @@ module.exports = {
   editor: {
     openFile: "Open File",
     saveFile: "Save File",
+    saveAs: "Save As",
     saveBeforeSetSource: {
       message: "Unsaved changes",
       detail:

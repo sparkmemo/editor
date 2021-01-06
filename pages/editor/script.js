@@ -54,7 +54,7 @@ function init() {
  * Setting up all IPC event listeners
  */
 function setupIPC() {
-  ipcRenderer.on(msgChannel.setSource, (_, args, newContent) => {
+  ipcRenderer.on(msgChannel.open, (_, args, newContent) => {
     const open = (args, newContent) => {
       sourceEl.value = newContent;
       fileMeta = {
@@ -74,6 +74,30 @@ function setupIPC() {
     } else {
       open(args, newContent);
     }
+  });
+
+  ipcRenderer.on(msgChannel.saveReq, () => {
+    ipcRenderer
+      .invoke(msgChannel.save, fileMeta, sourceEl.value)
+      .then((res) => {
+        const [shouldProceed, path = undefined] = res;
+        if (shouldProceed) {
+          fileMeta.changed = false;
+          if (path) {
+            fileMeta.path = path;
+          }
+        }
+      });
+  });
+
+  ipcRenderer.on(msgChannel.saveAsReq, () => {
+    ipcRenderer
+      .invoke(msgChannel.saveAs, fileMeta, sourceEl.value)
+      .then((shouldProceed) => {
+        if (shouldProceed) {
+          fileMeta.changed = false;
+        }
+      });
   });
 }
 

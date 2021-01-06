@@ -1,5 +1,9 @@
 const msgChannel = {
-  setSource: "setSource",
+  open: "open",
+  saveReq: "saveReq",
+  save: "save",
+  saveAsReq: "saveAsReq",
+  saveAs: "saveAs",
   saveBeforeSetSource: "saveBeforeSetSource",
 };
 

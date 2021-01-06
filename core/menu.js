@@ -31,21 +31,8 @@ function buildMenuTemplate() {
       submenu: [
         {
           label: "About SparkMEMO",
-          async click(_, browserWindow) {
-            const versionInfo = [
-              "Version: 0.2.0",
-              `Electron: ${process.versions.electron}`,
-              `Chrome: ${process.versions.chrome}`,
-            ].join("\n");
-            const selectedOption = dialog.showMessageBoxSync(browserWindow, {
-              message: "SparkMEMO",
-              detail: versionInfo,
-              buttons: [t("about.close"), t("about.copy")],
-              cancelId: 0,
-            });
-            if (selectedOption === 1) {
-              clipboard.writeText(versionInfo);
-            }
+          click(_, browserWindow) {
+            showAbout(browserWindow);
           },
         },
         {
@@ -102,10 +89,16 @@ function buildMenuTemplate() {
         {
           label: t("fileMenu.saveFile"),
           accelerator: "CmdOrCtrl+S",
+          click(_, browserWindow) {
+            browserWindow.webContents.send(msgChannel.saveReq);
+          },
         },
         {
           label: t("fileMenu.saveAsFile"),
           accelerator: "CmdOrCtrl+Shift+S",
+          click(_, browserWindow) {
+            browserWindow.webContents.send(msgChannel.saveAsReq);
+          },
         },
         {
           type: "separator",
@@ -163,6 +156,28 @@ function buildMenuTemplate() {
 }
 
 /**
+ * Show the about page.
+ *
+ * @param {*} browserWindow - Current browserWindow
+ */
+function showAbout(browserWindow) {
+  const versionInfo = [
+    "Version: 0.2.0",
+    `Electron: ${process.versions.electron}`,
+    `Chrome: ${process.versions.chrome}`,
+  ].join("\n");
+  const selectedOption = dialog.showMessageBoxSync(browserWindow, {
+    message: "SparkMEMO",
+    detail: versionInfo,
+    buttons: [t("about.close"), t("about.copy")],
+    cancelId: 0,
+  });
+  if (selectedOption === 1) {
+    clipboard.writeText(versionInfo);
+  }
+}
+
+/**
  * Handles the click event from app menu "File - Open File"
  *
  * @param {BrowserWindow} browserWindow - Current BrowserWindow
@@ -182,7 +197,7 @@ function openFile(browserWindow) {
   if (path) {
     const content = fs.readFileSync(path[0], fsOption);
     browserWindow.webContents.send(
-      msgChannel.setSource,
+      msgChannel.open,
       {
         path: path[0],
       },
@@ -190,6 +205,85 @@ function openFile(browserWindow) {
     );
   }
 }
+
+/**
+ * Handles the save event from app menu "File - Save File"
+ *
+ * @param {*} e - Electron IpcMain event
+ * @param {*} metaData - Current file meta data
+ * @param {*} content - Current existing content
+ * @returns {Array} - Operation status and path
+ */
+function saveFile(e, metaData, content) {
+  if (metaData.path) {
+    try {
+      fs.writeFileSync(metaData.path, content, fsOption);
+      return [true];
+    } catch (e) {
+      return [false];
+    }
+  } else {
+    const browserWindow = BrowserWindow.fromWebContents(e.sender);
+    const path = dialog.showSaveDialogSync(browserWindow, {
+      title: t("editor.saveFile"),
+      message: t("editor.saveFile"),
+      filters: [
+        {
+          name: "Markdown",
+          extensions: ["md"],
+        },
+      ],
+      properties: ["createDirectory", "showOverwriteConfirmation"],
+    });
+    if (path) {
+      try {
+        fs.writeFileSync(path, content, fsOption);
+        return [true, path];
+      } catch (e) {
+        return [false];
+      }
+    } else {
+      return [false];
+    }
+  }
+}
+
+ipcMain.handle(msgChannel.save, saveFile);
+
+/**
+ * Handles the save as event from app menu "File - Save As"
+ *
+ * @param {*} e - Electron IpcMain event
+ * @param {*} metaData - Current file meta data
+ * @param {*} content - Current existing content
+ * @returns {boolean} - Operation status
+ */
+function saveAs(e, metaData, content) {
+  const browserWindow = BrowserWindow.fromWebContents(e.sender);
+  const path = dialog.showSaveDialogSync(browserWindow, {
+    title: t("editor.saveAs"),
+    message: t("editor.saveAs"),
+    filters: [
+      {
+        name: "Markdown",
+        extensions: ["md"],
+      },
+    ],
+    properties: ["createDirectory", "showOverwriteConfirmation"],
+  });
+  if (path) {
+    try {
+      fs.writeFileSync(path, content, fsOption);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  } else {
+    return false;
+  }
+}
+
+ipcMain.handle(msgChannel.saveAs, saveAs);
 
 /**
  * Handles saving existing content before opening a new file.
@@ -214,9 +308,9 @@ function saveBeforeSetSource(e, metaData, content) {
       message: t("editor.saveBeforeSetSource.message"),
       detail: t("editor.saveBeforeSetSource.detail"),
       buttons: [
-        t("editor.saveBeforeSetSource.detail.save"),
-        t("editor.saveBeforeSetSource.detail.ignore"),
-        t("editor.saveBeforeSetSource.detail.cancel"),
+        t("editor.saveBeforeSetSource.save"),
+        t("editor.saveBeforeSetSource.ignore"),
+        t("editor.saveBeforeSetSource.cancel"),
       ],
       cancelId: 2,
     });

@@ -9,17 +9,18 @@ module.exports = {
     openFile: "打开",
     saveFile: "保存",
     saveAsFile: "另存为",
-    preference: "偏好设置"
+    preference: "偏好设置",
   },
   editor: {
     openFile: "打开文件",
     saveFile: "保存文件",
+    saveAs: "另存为",
     saveBeforeSetSource: {
       message: "未保存的变动",
       detail: "当前窗口尚有未保存的变动，请问您想如何处理？",
       save: "保存",
       ignore: "忽略",
       cancel: "取消",
-    }
-  }
+    },
+  },
 };
