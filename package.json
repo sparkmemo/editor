@@ -2,7 +2,7 @@
   "name": "sparkmemo",
   "version": "0.2.0",
   "description": "A minimalist designed Markdown editor.",
-  "main": "index.cjs",
+  "main": "index.js",
   "scripts": {
     "start": "electron .",
     "build": "electron-builder"

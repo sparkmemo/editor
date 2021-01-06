@@ -1,6 +1,11 @@
 appId: com.sparkmemo.editor
 productName: SparkMEMO
 copyright: Copyright © 2021 Tongze Wang
+fileAssociations:
+  ext: md
+  name: Markdown
+  role: Editor
+  isPackage: false
 mac:
   category: public.app-category.utilities
   target:

@@ -1,8 +1,12 @@
-const { app, BrowserWindow, Menu } = require("electron");
+const { app, BrowserWindow, Menu, dialog } = require("electron");
+const fs = require("fs");
 const path = require("path");
+const { msgChannel, fsOption } = require("./core/const");
 
 /**
  * Creates an editor window.
+ *
+ * @returns {BrowserWindow} - browserWindow
  */
 function createWindow() {
   const win = new BrowserWindow({
@@ -14,8 +18,9 @@ function createWindow() {
     },
   });
 
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
   win.loadFile(path.resolve(__dirname, "pages", "editor", "index.html"));
+  return win;
 }
 
 /**
@@ -25,6 +30,34 @@ function setMenu() {
   const { menuTemplate } = require("./core/menu");
   Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate));
 }
+
+/**
+ * Handles open-file event on MacOS.
+ *
+ * @param {*} e - Event
+ * @param {*} openPath - File Path
+ */
+function handleOpenFile_Darwin(e, openPath) {
+  e.preventDefault();
+  const content = fs.readFileSync(openPath, fsOption);
+  if (app.isReady()) {
+    const win = createWindow();
+    win.once("ready-to-show", () => {
+      win.webContents.send(msgChannel.open, { path: openPath }, content);
+    });
+  } else {
+    app.whenReady().then(() => {
+      const winList = BrowserWindow.getAllWindows();
+      if (winList.length > 0) {
+        const win = winList[0];
+        win.once("ready-to-show", () => {
+          win.webContents.send(msgChannel.open, { path: openPath }, content);
+        });
+      }
+    });
+  }
+}
+app.on("open-file", handleOpenFile_Darwin);
 
 app.whenReady().then(() => {
   // Set application name
