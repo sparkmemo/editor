@@ -292,7 +292,6 @@ ipcMain.handle(msgChannel.saveAs, saveAs);
  * @param {*} e - Electron IpcMain event
  * @param {*} metaData - Current file meta data
  * @param {*} content - Current existing content
- * @returns {boolean} - Should proceed to open a new file?
  */
 function saveBeforeSetSource(e, metaData, content) {
   if (metaData.path) {
