@@ -43,11 +43,12 @@ function init() {
   };
   marked.use({ renderer });
   mermaid.initialize({ theme: "neutral" });
-  sourceEl.addEventListener("keyup", () => {
+  sourceEl.addEventListener("keypress", () => {
     fileMeta.changed = true;
     render();
   });
   sourceEl.addEventListener("drop", handleDrop);
+  window.addEventListener("beforeunload", handleClose);
 }
 
 /**
@@ -64,13 +65,14 @@ function setupIPC() {
       render();
     };
     if (sourceEl.value) {
-      ipcRenderer
-        .invoke(msgChannel.saveBeforeSetSource, fileMeta, sourceEl.value)
-        .then((shouldProceed) => {
-          if (shouldProceed) {
-            open(args, newContent);
-          }
-        });
+      const shouldProceed = ipcRenderer.sendSync(
+        msgChannel.saveBeforeNext,
+        fileMeta,
+        sourceEl.value
+      );
+      if (shouldProceed) {
+        open(args, newContent);
+      }
     } else {
       open(args, newContent);
     }
@@ -81,6 +83,7 @@ function setupIPC() {
       .invoke(msgChannel.save, fileMeta, sourceEl.value)
       .then((res) => {
         const [shouldProceed, path = undefined] = res;
+        console.log(res);
         if (shouldProceed) {
           fileMeta.changed = false;
           if (path) {
@@ -197,6 +200,24 @@ function handleDrop(e) {
     if (file.type.startsWith("image")) {
       sourceEl.value += `![${file.name}](${file.path})\n`;
       render();
+    }
+  }
+}
+
+/**
+ * Handles the window close event
+ *
+ * @param {*} e - HTML BeforeUnload Event
+ */
+function handleClose(e) {
+  if (fileMeta.changed) {
+    const shouldProceed = ipcRenderer.sendSync(
+      msgChannel.saveBeforeNext,
+      fileMeta,
+      sourceEl.value
+    );
+    if (!shouldProceed) {
+      e.returnValue = false;
     }
   }
 }

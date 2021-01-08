@@ -200,6 +200,7 @@ function openFile(browserWindow) {
       msgChannel.open,
       {
         path: path[0],
+        changed: false,
       },
       content
     );
@@ -297,9 +298,9 @@ function saveBeforeSetSource(e, metaData, content) {
   if (metaData.path) {
     try {
       fs.writeFileSync(path, content, fsOption);
-      return true;
-    } catch (e) {
-      return false;
+      e.returnValue = true;
+    } catch (error) {
+      e.returnValue = false;
     }
   } else {
     const browserWindow = BrowserWindow.fromWebContents(e.sender);
@@ -332,26 +333,27 @@ function saveBeforeSetSource(e, metaData, content) {
         if (path) {
           try {
             fs.writeFileSync(path, content, fsOption);
-            return true;
-          } catch (e) {
-            return false;
+            e.returnValue = true;
+          } catch (error) {
+            e.returnValue = false;
           }
         } else {
-          return false;
+          e.returnValue = false;
         }
-
+        break;
       // "Ignore"
       case 1:
-        return true;
-
+        e.returnValue = true;
+        break;
       // "Cancel"
       case 2:
-        return false;
+        e.returnValue = false;
+        break;
     }
   }
 }
 
-ipcMain.handle(msgChannel.saveBeforeSetSource, saveBeforeSetSource);
+ipcMain.on(msgChannel.saveBeforeNext, saveBeforeSetSource);
 
 module.exports = {
   menuTemplate: buildMenuTemplate(),

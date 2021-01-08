@@ -4,7 +4,7 @@ const msgChannel = {
   save: "save",
   saveAsReq: "saveAsReq",
   saveAs: "saveAs",
-  saveBeforeSetSource: "saveBeforeSetSource",
+  saveBeforeNext: "saveBeforeNext",
 };
 
 const fsOption = {

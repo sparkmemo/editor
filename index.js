@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, dialog } = require("electron");
+const { app, BrowserWindow, Menu, shell } = require("electron");
 const fs = require("fs");
 const path = require("path");
 const { msgChannel, fsOption } = require("./core/const");
@@ -19,7 +19,14 @@ function createWindow() {
   });
 
   // win.webContents.openDevTools();
-  win.loadFile(path.resolve(__dirname, "pages", "editor", "index.html"));
+  win
+    .loadFile(path.resolve(__dirname, "pages", "editor", "index.html"))
+    .then(() => {
+      win.webContents.on("will-navigate", (e, url) => {
+        e.preventDefault();
+        shell.openExternal(url);
+      });
+    });
   return win;
 }
 
