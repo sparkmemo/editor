@@ -293,32 +293,26 @@ ipcMain.handle(msgChannel.saveAs, saveAs);
  * @param {*} metaData - Current file meta data
  * @param {*} content - Current existing content
  */
-function saveBeforeSetSource(e, metaData, content) {
-  if (metaData.path) {
-    try {
-      fs.writeFileSync(path, content, fsOption);
-      e.returnValue = true;
-    } catch (error) {
-      e.returnValue = false;
-    }
-  } else {
-    const browserWindow = BrowserWindow.fromWebContents(e.sender);
-    const selectedOption = dialog.showMessageBoxSync(browserWindow, {
-      type: "warning",
-      message: t("editor.saveBeforeSetSource.message"),
-      detail: t("editor.saveBeforeSetSource.detail"),
-      buttons: [
-        t("editor.saveBeforeSetSource.save"),
-        t("editor.saveBeforeSetSource.ignore"),
-        t("editor.saveBeforeSetSource.cancel"),
-      ],
-      cancelId: 2,
-    });
+function saveBeforeNext(e, metaData, content) {
+  const browserWindow = BrowserWindow.fromWebContents(e.sender);
+  const selectedOption = dialog.showMessageBoxSync(browserWindow, {
+    type: "warning",
+    message: t("editor.saveBeforeSetSource.message"),
+    detail: t("editor.saveBeforeSetSource.detail"),
+    buttons: [
+      t("editor.saveBeforeSetSource.save"),
+      t("editor.saveBeforeSetSource.ignore"),
+      t("editor.saveBeforeSetSource.cancel"),
+    ],
+    cancelId: 2,
+  });
 
-    switch (selectedOption) {
-      // "Save"
-      case 0:
-        const path = dialog.showSaveDialogSync(browserWindow, {
+  switch (selectedOption) {
+    // "Save"
+    case 0:
+      const path =
+        metaData.path ||
+        dialog.showSaveDialogSync(browserWindow, {
           title: t("editor.saveFile"),
           message: t("editor.saveFile"),
           filters: [
@@ -329,30 +323,29 @@ function saveBeforeSetSource(e, metaData, content) {
           ],
           properties: ["createDirectory", "showOverwriteConfirmation"],
         });
-        if (path) {
-          try {
-            fs.writeFileSync(path, content, fsOption);
-            e.returnValue = true;
-          } catch (error) {
-            e.returnValue = false;
-          }
-        } else {
+      if (path) {
+        try {
+          fs.writeFileSync(path, content, fsOption);
+          e.returnValue = true;
+        } catch (error) {
           e.returnValue = false;
         }
-        break;
-      // "Ignore"
-      case 1:
-        e.returnValue = true;
-        break;
-      // "Cancel"
-      case 2:
+      } else {
         e.returnValue = false;
-        break;
-    }
+      }
+      break;
+    // "Ignore"
+    case 1:
+      e.returnValue = true;
+      break;
+    // "Cancel"
+    case 2:
+      e.returnValue = false;
+      break;
   }
 }
 
-ipcMain.on(msgChannel.saveBeforeNext, saveBeforeSetSource);
+ipcMain.on(msgChannel.saveBeforeNext, saveBeforeNext);
 
 module.exports = {
   menuTemplate: buildMenuTemplate(),

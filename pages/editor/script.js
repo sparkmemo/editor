@@ -43,7 +43,7 @@ function init() {
   };
   marked.use({ renderer });
   mermaid.initialize({ theme: "neutral" });
-  sourceEl.addEventListener("keypress", () => {
+  sourceEl.addEventListener("keyup", () => {
     fileMeta.changed = true;
     render();
   });
@@ -85,10 +85,12 @@ function setupIPC() {
         const [shouldProceed, path = undefined] = res;
         console.log(res);
         if (shouldProceed) {
-          fileMeta.changed = false;
           if (path) {
             fileMeta.path = path;
           }
+          setTimeout(() => {
+            fileMeta.changed = false;
+          }, 200);
         }
       });
   });
@@ -98,7 +100,9 @@ function setupIPC() {
       .invoke(msgChannel.saveAs, fileMeta, sourceEl.value)
       .then((shouldProceed) => {
         if (shouldProceed) {
-          fileMeta.changed = false;
+          setTimeout(() => {
+            fileMeta.changed = false;
+          }, 200);
         }
       });
   });
