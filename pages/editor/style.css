@@ -53,3 +53,15 @@
 #output div.lang-katex-block .katex-display {
   margin: 0 auto 16px auto;
 }
+
+@media (prefers-color-scheme: dark) {
+  #source {
+    background-color: #495057;
+    color: white;
+  }
+
+  #output {
+    background-color: #343a40;
+    color: white;
+  }
+}

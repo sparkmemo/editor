@@ -35,7 +35,7 @@ function init() {
       }
 
       if (lang) {
-        return `<pre><code class="${lang}">${code}</code></pre>\n`;
+        return `<pre><code class="lang-${lang}">${code}</code></pre>\n`;
       }
 
       return `<pre><code class="lang-text">${code}</code></pre>\n`;

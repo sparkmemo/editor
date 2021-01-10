@@ -1,0 +1,68 @@
+.markdown-body kbd {
+  color: #fff;
+  background-color: #4c4c4c;
+  border: solid 1px #7a7d80;
+  border-bottom-color: #7a7d80;
+  box-shadow: inset 0 -1px 0 #7a7d80;
+}
+
+.markdown-body hr {
+  background-color: #7c7d80;
+}
+
+.markdown-body blockquote {
+  color: #8a9299;
+  border-left: 0.25em solid #86888a;
+}
+
+.markdown-body h1 {
+  border-bottom: 1px solid #646566;
+}
+.markdown-body h2 {
+  border-bottom: 1px solid #646566;
+}
+.markdown-body h6 {
+  color: #b8c1cc;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  border: 1px solid #888a8c;
+}
+.markdown-body table tr {
+  background-color: #343a40;
+  border-top: 1px solid #797c80;
+}
+.markdown-body table tr:nth-child(2n) {
+  background-color: #4b4c4d;
+}
+
+.markdown-body img {
+  background-color: #343a40;
+}
+
+.markdown-body span.frame > span {
+  border: 1px solid #888a8c;
+}
+
+.markdown-body code,
+.markdown-body tt {
+  background-color: rgba(196, 226, 255, 0.15);
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  background-color: rgba(196, 226, 255, 0.15);
+}
+
+.markdown-body .csv-data .blob-num {
+  background: #343a40;
+}
+
+.markdown-body .csv-data th {
+  background: #4b4c4d;
+}
+
+a {
+  color: #00abff;
+}
