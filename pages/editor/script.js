@@ -1,4 +1,5 @@
 const { ipcRenderer } = require("electron");
+const { basename } = require("path");
 const { msgChannel } = require("../../core/const");
 
 const sourceEl = document.getElementById("source");
@@ -45,6 +46,9 @@ function init() {
   mermaid.initialize({ theme: "neutral" });
   sourceEl.addEventListener("keyup", () => {
     fileMeta.changed = true;
+    if (!document.title.endsWith("*")) {
+      document.title += "*";
+    }
     render();
   });
   sourceEl.addEventListener("drop", handleDrop);
@@ -62,6 +66,7 @@ function setupIPC() {
         ...fileMeta,
         ...args,
       };
+      document.title = `SparkMEMO - ${basename(args.path)}`;
       render();
     };
     if (sourceEl.value) {
@@ -83,13 +88,13 @@ function setupIPC() {
       .invoke(msgChannel.save, fileMeta, sourceEl.value)
       .then((res) => {
         const [shouldProceed, path = undefined] = res;
-        console.log(res);
         if (shouldProceed) {
           if (path) {
             fileMeta.path = path;
           }
           setTimeout(() => {
             fileMeta.changed = false;
+            document.title = `SparkMEMO - ${basename(fileMeta.path || path)}`;
           }, 200);
         }
       });
@@ -102,6 +107,7 @@ function setupIPC() {
         if (shouldProceed) {
           setTimeout(() => {
             fileMeta.changed = false;
+            document.title = `SparkMEMO - ${basename(fileMeta.path)}`;
           }, 200);
         }
       });
