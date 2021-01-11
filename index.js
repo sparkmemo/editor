@@ -8,7 +8,7 @@ const { msgChannel, fsOption } = require("./core/const");
  *
  * @returns {BrowserWindow} - browserWindow
  */
-function createWindow() {
+function createEditorWindow() {
   const win = new BrowserWindow({
     width: 1280,
     height: 720,
@@ -16,6 +16,7 @@ function createWindow() {
       contextIsolation: false,
       nodeIntegration: true,
     },
+    show: false,
   });
 
   // win.webContents.openDevTools();
@@ -27,6 +28,46 @@ function createWindow() {
         shell.openExternal(url);
       });
     });
+
+  win.once("ready-to-show", () => {
+    win.show();
+  });
+
+  return win;
+}
+
+/**
+ * Creates an editor settings window.
+ *
+ * @param {BrowserWindow} parent - Parent browserWindow
+ * @returns {BrowserWindow} - browserWindow
+ */
+function createSettingsWindow(parent) {
+  const win = new BrowserWindow({
+    width: 1152,
+    height: 648,
+    webPreferences: {
+      contextIsolation: false,
+      nodeIntegration: true,
+    },
+    parent,
+    show: false,
+  });
+
+  // win.webContents.openDevTools();
+  win
+    .loadFile(path.resolve(__dirname, "pages", "settings", "index.html"))
+    .then(() => {
+      win.webContents.on("will-navigate", (e, url) => {
+        e.preventDefault();
+        shell.openExternal(url);
+      });
+    });
+
+  win.once("ready-to-show", () => {
+    win.show();
+  });
+
   return win;
 }
 
@@ -48,7 +89,7 @@ function handleOpenFile_Darwin(e, openPath) {
   e.preventDefault();
   const content = fs.readFileSync(openPath, fsOption);
   if (app.isReady()) {
-    const win = createWindow();
+    const win = createEditorWindow();
     win.once("ready-to-show", () => {
       win.webContents.send(msgChannel.open, { path: openPath }, content);
     });
@@ -73,7 +114,7 @@ app.whenReady().then(() => {
   // Set application menu
   setMenu();
 
-  createWindow();
+  createEditorWindow();
 });
 
 app.on("window-all-closed", () => {
@@ -84,10 +125,11 @@ app.on("window-all-closed", () => {
 
 app.on("activate", () => {
   if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
+    createEditorWindow();
   }
 });
 
 module.exports = {
-  createWindow,
+  createEditorWindow,
+  createSettingsWindow,
 };

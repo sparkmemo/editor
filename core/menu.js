@@ -9,7 +9,7 @@ const {
 } = require("electron");
 
 const { fsOption, msgChannel } = require("../core/const");
-const { createWindow } = require("../index");
+const { createEditorWindow, createSettingsWindow } = require("../index");
 const { t } = require("../i18n");
 
 const platform = {
@@ -70,7 +70,7 @@ function buildMenuTemplate() {
           label: t("fileMenu.newWindow"),
           accelerator: "CmdOrCtrl+N",
           click() {
-            createWindow();
+            createEditorWindow();
           },
         },
         {
@@ -106,6 +106,9 @@ function buildMenuTemplate() {
         {
           label: t("fileMenu.preference"),
           accelerator: "CmdOrCtrl+,",
+          click(_, browserWindow) {
+            createSettingsWindow(browserWindow);
+          },
         },
         {
           type: "separator",

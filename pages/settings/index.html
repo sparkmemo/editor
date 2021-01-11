@@ -1,15 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sparkdown Editor - Settings</title>
     <link
       rel="stylesheet"
-      href="../../node_modules/tailwindcss/dist/tailwind.css"
+      href="../../node_modules/@fontsource/roboto/100.css"
     />
+    <link
+      rel="stylesheet"
+      href="../../node_modules/@fontsource/roboto/300.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../node_modules/@fontsource/roboto/400.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../node_modules/@fontsource/roboto/500.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../node_modules/@fontsource/roboto/700.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../node_modules/@fontsource/roboto/900.css"
+    />
+    <link
+      href="../../node_modules/@mdi/font/css/materialdesignicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../../node_modules/vuetify/dist/vuetify.min.css"
+      rel="stylesheet"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"
+    />
+    <title>SparkMEMO - Settings</title>
+    <style>
+      html {
+        overflow-y: auto;
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello World</h1>
+    <div id="app">
+      <v-app>
+        <v-main>
+          <v-container fluid class="pa-4">
+            <v-tabs v-model="tab">
+              <v-tab class="pl-4">General</v-tab>
+            </v-tabs>
+
+            <v-tabs-items v-model="tab">
+              <v-tab-item>
+                <v-card-flat>
+                  <v-card-text>
+                    <p>123</p>
+                  </v-card-text>
+                </v-card-flat>
+              </v-tab-item>
+            </v-tabs-items>
+          </v-container>
+        </v-main>
+      </v-app>
+    </div>
+
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script src="../../node_modules/vuetify/dist/vuetify.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        vuetify: new Vuetify({
+          theme: {
+            dark: true,
+          },
+        }),
+        data: () => {
+          return {
+            tab: 0,
+          };
+        },
+      });
+    </script>
   </body>
 </html>
